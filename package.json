@@ -1,0 +1,39 @@
+{
+  "name": "battle-cli",
+  "version": "0.0.0",
+  "description": "A little CLI adventure game :)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node --transpile-only -r tsconfig-paths/register src/main.ts",
+    "start:dev": "nodemon src/main.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bastienterrier/battle-cli.git"
+  },
+  "keywords": [
+    "game",
+    "cli"
+  ],
+  "author": "bastien TERRIER",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bastienterrier/battle-cli/issues"
+  },
+  "homepage": "https://github.com/bastienterrier/battle-cli#readme",
+  "dependencies": {
+    "@types/node": "^12.7.11",
+    "fs-extra": "^8.1.0",
+    "inquirer": "^7.0.0",
+    "nodemon": "^1.19.3",
+    "ts-node": "^8.4.1",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.3"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^8.0.0",
+    "@types/inquirer": "^6.5.0",
+    "tsconfig-paths": "^3.9.0"
+  }
+}
