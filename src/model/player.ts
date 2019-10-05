@@ -1,5 +1,6 @@
 import { writeFile, readFile } from 'fs-extra';
 import * as path from 'path';
+import { copyProperties } from '../helpers/utils';
 
 export enum ItemType {
   RESOURCE = 'RESOURCE',
@@ -8,7 +9,7 @@ export enum ItemType {
 
 export class InventoryItem {
   constructor(inventoryItem: InventoryItem) {
-    copy(inventoryItem, this);
+    copyProperties(inventoryItem, this);
   }
   name: string;
   description: string;
@@ -22,7 +23,7 @@ export class Inventory {
     inventory.items.forEach(item => {
       this.items.push(new InventoryItem(item));
     });
-    copy(inventory, this);
+    copyProperties(inventory, this);
   }
   items: InventoryItem[];
   maxPods: number;
@@ -34,7 +35,7 @@ export class Inventory {
 
 export class Location {
   constructor(location: Location) {
-    copy(location, this);
+    copyProperties(location, this);
   }
   x: number;
   y: number;
@@ -42,7 +43,7 @@ export class Location {
 
 export class Spell {
   constructor(spell: Spell) {
-    copy(spell, this);
+    copyProperties(spell, this);
   }
   name: string;
   description: string;
@@ -63,7 +64,7 @@ export class Player {
     this.location = new Location(player.location);
     this.inventory = new Inventory(player.inventory);
 
-    copy(player, this);
+    copyProperties(player, this);
   }
   name: string;
   level: number;
@@ -101,12 +102,4 @@ export async function loadPlayer(file: string): Promise<Player> {
     console.error(err);
     return new Player(null);
   });
-}
-
-function copy(src: any, target: any) {
-  for (const key in src) {
-    if (src.hasOwnProperty(key) && typeof src[key] !== 'object') {
-      target[key] = src[key];
-    }
-  }
 }

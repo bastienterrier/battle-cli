@@ -4,7 +4,7 @@
   "description": "A little CLI adventure game :)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "ts-node --transpile-only -r tsconfig-paths/register src/main.ts",
     "start:dev": "nodemon src/main.ts"
   },
@@ -23,10 +23,13 @@
   },
   "homepage": "https://github.com/bastienterrier/battle-cli#readme",
   "dependencies": {
+    "@types/jest": "^24.0.18",
     "@types/node": "^12.7.11",
     "fs-extra": "^8.1.0",
     "inquirer": "^7.0.0",
+    "jest": "^24.9.0",
     "nodemon": "^1.19.3",
+    "ts-jest": "^24.1.0",
     "ts-node": "^8.4.1",
     "tslint": "^5.20.0",
     "typescript": "^3.6.3"
@@ -35,5 +38,23 @@
     "@types/fs-extra": "^8.0.0",
     "@types/inquirer": "^6.5.0",
     "tsconfig-paths": "^3.9.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "testRegex": ".spec.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node",
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.json"
+      }
+    }
   }
 }
