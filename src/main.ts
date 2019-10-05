@@ -1,4 +1,4 @@
-import { loadPlayer } from './model/player';
+import { loadPlayer } from './models/player';
 import inquirer = require('inquirer');
 import { readdir } from 'fs-extra';
 import * as path from 'path';
