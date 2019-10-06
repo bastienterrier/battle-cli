@@ -15,6 +15,7 @@ export class InventoryItem {
   description: string;
   type: ItemType;
   pods: number;
+  quantity: number;
 }
 
 export class Inventory {
@@ -91,15 +92,4 @@ export class Player {
     const data = JSON.stringify(this, null, 2);
     return writeFile(fileName, data, 'utf8');
   }
-}
-export async function loadPlayer(file: string): Promise<Player> {
-  return readFile(file, 'utf8').then((data) => {
-    const player: Player = JSON.parse(data) as Player;
-
-    return new Player(player);
-
-  }).catch(err => {
-    console.error(err);
-    return new Player(null);
-  });
 }
