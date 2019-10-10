@@ -4,6 +4,11 @@ import constants from '../globals/constants';
 import * as inquirer from 'inquirer';
 import { humanizeFilename } from '../transformers/file';
 
+interface DisplayedFile {
+  filename: string;
+  humanizeFilemane: string;
+}
+
 async function loadSave(file: string): Promise<Player> {
   return readFile(file, 'utf8')
     .then((data) => JSON.parse(data) as Player)
@@ -16,10 +21,7 @@ async function loadSave(file: string): Promise<Player> {
 async function selectSave(): Promise<string> {
   return readdir(constants.savesPath)
     .then((files) => {
-      interface DisplayedFile {
-        filename: string;
-        humanizeFilemane: string;
-      }
+
       const displayedFiles: DisplayedFile[] = files.map(f => {
         return {
           filename: f,

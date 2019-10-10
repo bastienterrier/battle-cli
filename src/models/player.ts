@@ -1,6 +1,5 @@
-import { writeFile, readFile } from 'fs-extra';
-import * as path from 'path';
 import { copyProperties } from '../helpers/utils';
+import { Location } from './location';
 
 export enum ItemType {
   RESOURCE = 'RESOURCE',
@@ -32,14 +31,6 @@ export class Inventory {
   display() {
     console.table(this.items);
   }
-}
-
-export class Location {
-  constructor(location: Location) {
-    copyProperties(location, this);
-  }
-  x: number;
-  y: number;
 }
 
 export class Spell {
@@ -84,12 +75,4 @@ export class Player {
     this.level ++;
   }
 
-  save(): Promise<void> {
-    const srcDir = path.dirname(require.main.filename) + '/';
-
-    const now: string = new Date().toJSON().slice(0, 19).replace(/[-T:]/g, '');
-    const fileName: string = `${srcDir}../saves/${this.name}_${now}.json`;
-    const data = JSON.stringify(this, null, 2);
-    return writeFile(fileName, data, 'utf8');
-  }
 }
