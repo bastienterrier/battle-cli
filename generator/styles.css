@@ -1,0 +1,34 @@
+.cell, .code {
+  background-color: #fff;
+  height: 50px; /* You must set a specified height */
+  width: 50px;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.codes-container .code {
+  display: inline-block;
+}
+
+.cell:hover, .code:hover {
+  background-color: #aaa;
+  cursor: pointer;
+}
+
+.code.selected{
+  background-color: red;
+}
+
+.code-village {
+  background-image: url('./assets/village.png');
+}
+.code-plains {
+  background-image: url('./assets/plains.png');
+}
+.code-mountain {
+  background-image: url('./assets/mountain.png');
+}
+.code-forest {
+  background-image: url('./assets/forest.png');
+}
